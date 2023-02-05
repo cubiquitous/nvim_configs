@@ -81,6 +81,13 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
+
+	use({
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({})
+		end,
+	})
 	-- =================================================================================
 
 	use({ -- LSP Configuration & Plugins
@@ -206,9 +213,11 @@ vim.o.smartcase = true
 -- Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
-
+vim.o.clipboard = "unnamedplus"
 -- Set colorscheme
 vim.o.termguicolors = true
+vim.o.t_Co = 256
+
 -- vim.cmd([[colorscheme rose-pine]])
 
 -- Set completeopt to have a better completion experience
