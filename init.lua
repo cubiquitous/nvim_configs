@@ -13,6 +13,8 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("packer").startup(function(use)
 	-- Package manager
 	use("wbthomason/packer.nvim")
+	use("echasnovski/mini.nvim")
+
 	-- Unless you are still migrating, remove the deprecated commands from v1.x
 
 	-- =================================================================================
@@ -32,6 +34,13 @@ require("packer").startup(function(use)
 
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 	use("jose-elias-alvarez/null-ls.nvim")
+
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 
 	-- =================================================================================
 
@@ -522,6 +531,8 @@ cmp.setup({
 		{ name = "nvim-lua" },
 	},
 })
+
+require("mini.pairs").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
