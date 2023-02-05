@@ -42,6 +42,25 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
+
+	-- using packer.nvim
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "v3.*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup({})
+		end,
+	})
 	-- =================================================================================
 
 	use({ -- LSP Configuration & Plugins
