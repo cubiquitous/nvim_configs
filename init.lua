@@ -23,6 +23,12 @@ require("packer").startup(function(use)
 		as = "rose-pine",
 	})
 	use({
+		"nacro90/numb.nvim",
+		config = function()
+			require("numb").setup()
+		end,
+	})
+	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		requires = {
@@ -61,6 +67,8 @@ require("packer").startup(function(use)
 			require("bufferline").setup({})
 		end,
 	})
+
+	use({ "nyoom-engineering/oxocarbon.nvim" })
 	-- =================================================================================
 
 	use({ -- LSP Configuration & Plugins
@@ -154,6 +162,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd.colorscheme("oxocarbon")
+
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
@@ -186,7 +197,7 @@ vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd([[colorscheme rose-pine]])
+-- vim.cmd([[colorscheme rose-pine]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
