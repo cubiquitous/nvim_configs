@@ -142,53 +142,58 @@ require("lazy").setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+local opt = vim.opt
+local o = vim.o
 
-vim.opt.background = "dark" -- set this to dark or light
+opt.background = "dark" -- set this to dark or light
 vim.cmd.colorscheme("oxocarbon")
 
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+o.foldcolumn = "1" -- '0' is not bad
+o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+o.foldlevelstart = 99
+o.foldenable = true
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
 -- Set highlight on search
-vim.o.hlsearch = false
+o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+o.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+o.mouse = "a"
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
+o.updatetime = 250
 vim.wo.signcolumn = "yes"
-vim.o.clipboard = "unnamedplus"
+o.clipboard = "unnamedplus"
 -- Set colorscheme
-vim.o.termguicolors = true
-vim.o.t_Co = 256
+o.termguicolors = true
+o.t_Co = 256
 
 -- vim.cmd([[colorscheme rose-pine]])
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+o.completeopt = "menuone,noselect"
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+--  TODO: some stuff
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
