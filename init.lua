@@ -81,6 +81,9 @@ require("lazy").setup({
 			require("nvim-highlight-colors").setup({})
 		end,
 	},
+
+	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+
 	-- =================================================================================
 
 	{ -- LSP Configuration & Plugins
@@ -139,7 +142,7 @@ require("lazy").setup({
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 },
 })
-
+-- Packer
 -- [[ Setting options ]]
 -- See `:help vim.o`
 local opt = vim.opt
