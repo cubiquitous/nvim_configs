@@ -1,3 +1,5 @@
+-- [[ Setting options ]]
+-- See `:help vim.o`
 -- local opt = vim.opt
 local set = vim.o
 
