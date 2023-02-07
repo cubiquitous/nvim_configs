@@ -159,6 +159,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+vim.cmd([[
+    augroup AutoSaveFolds
+      autocmd!
+      autocmd BufWinLeave * mkview
+      autocmd BufWinEnter * silent loadview
+    augroup END
+
+]])
+
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require("lualine").setup({
