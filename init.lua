@@ -141,6 +141,35 @@ require("lazy").setup({
 
 require("user/settings")
 
+-- from u/m00fin_
+vim.cmd([[
+	let g:skipview_files = [
+		\ '[EXAMPLE PLUGIN BUFFER]'
+		\ ]
+	function! MakeViewCheck()
+		if has('quickfix') && &buftype =~ 'nofile'
+			" Buffer is marked as not a file
+			return 0
+		endif
+		if empty(glob(expand('%:p')))
+			" File does not exist on disk
+			return 0
+		endif
+		if index(g:skipview_files, expand('%')) >= 0
+			" File is in skip list
+			return 0
+		endif
+		return 1
+	endfunction
+	augroup vimrcAutoView
+		autocmd!
+		" Autosave & Load Views.
+		autocmd BufWritePost,BufLeave,BufWinLeave,WinLeave ?* if MakeViewCheck() | mkview! | endif
+		autocmd BufWinEnter ?* if MakeViewCheck() | normal! zx
+		autocmd BufWinEnter,BufWritePost ?* if MakeViewCheck() | silent! loadview | endif
+	augroup end
+]])
+
 -- Set highlight on search
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
@@ -158,15 +187,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
-
-vim.cmd([[
-    augroup AutoSaveFolds
-      autocmd!
-      autocmd BufWinLeave * mkview
-      autocmd BufWinEnter * silent loadview
-    augroup END
-
-]])
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
