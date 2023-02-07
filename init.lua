@@ -462,6 +462,10 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
+	completion = {
+		autocompletion = false,
+		keyword_length = 2,
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -498,6 +502,19 @@ cmp.setup({
 		{ name = "nvim-lua" },
 	},
 })
+
+-- creates small delay until the dropdown shows up
+vim.cmd([[
+  let s:timer = 0
+  autocmd TextChangedI * call s:on_text_changed()
+  function! s:on_text_changed() abort
+    call timer_stop(s:timer)
+    let s:timer = timer_start(250, function('s:complete'))
+  endfunction
+  function! s:complete(...) abort
+    lua require('cmp').complete({ reason = require('cmp').ContextReason.Auto })
+  endfunction
+]])
 
 require("mini.pairs").setup()
 
