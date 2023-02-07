@@ -1,45 +1,44 @@
 local opt = vim.opt
-local o = vim.o
+local set = vim.o
 
 opt.background = "dark" -- set this to dark or light
-vim.cmd.colorscheme("oxocarbon")
 
-o.foldcolumn = "1" -- '0' is not bad
-o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-o.foldlevelstart = 99
-o.foldenable = true
+set.foldcolumn = "1" -- '0' is not bad
+set.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+set.foldlevelstart = 99
+set.foldenable = true
 
-o.hlsearch = true
+set.hlsearch = false
 
--- Make line numbers default
-vim.wo.number = true
-o.relativenumber = true
+vim.wo.number = true -- Make line numbers default
+set.relativenumber = true -- relative numbers
 
--- Enable mouse mode
-o.mouse = "a"
+set.mouse = "a" -- Enable mouse mode
 
 -- Enable break indent
-o.breakindent = true
-
+set.breakindent = true
 -- Save undo history
-o.undofile = true
-
+set.undofile = true
 -- Case insensitive searching UNLESS /C or capital in search
-o.ignorecase = true
-o.smartcase = true
-
+set.ignorecase = true
+set.smartcase = true
 -- Decrease update time
-o.updatetime = 250
+set.updatetime = 250
+-- column of signs before numbers
 vim.wo.signcolumn = "yes"
-o.clipboard = "unnamedplus"
+set.clipboard = "unnamedplus"
 -- Set colorscheme
-o.termguicolors = true
-o.t_Co = 256
+set.completeopt = "menuone,noselect"
 
--- vim.cmd([[colorscheme rose-pine]])
+--[[
+  avaliable themes: 
+     oxocarbon
+     rose-pine
+-- ]]
+vim.cmd.colorscheme("oxocarbon")
+set.termguicolors = true
+set.t_Co = 256
 
--- Set completeopt to have a better completion experience
-o.completeopt = "menuone,noselect"
-
+-- leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
