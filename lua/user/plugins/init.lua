@@ -13,7 +13,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"echasnovski/mini.nvim",
+	{
+		"echasnovski/mini.nvim",
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
 	{
 		"rose-pine/neovim",
 		as = "rose-pine",
@@ -34,7 +39,17 @@ require("lazy").setup({
 		},
 	},
 
-	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		config = function()
+			require("ufo").setup({
+				provider_selector = function(bufnr, filetype, buftype)
+					return { "treesitter", "indent" }
+				end,
+			})
+		end,
+	},
 	"jose-elias-alvarez/null-ls.nvim",
 
 	{
@@ -79,6 +94,9 @@ require("lazy").setup({
 
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
+		config = function()
+			require("neodev").setup()
+		end,
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			"williamboman/mason.nvim",
@@ -106,8 +124,68 @@ require("lazy").setup({
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
+		config = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+			require("nvim-treesitter.configs").setup({
+				-- Add languages to be installed here that you want installed for treesitter
+				ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "typescript", "help", "vim" },
+
+				highlight = { enable = true },
+				indent = { enable = true, disable = { "python" } },
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<c-space>",
+						node_incremental = "<c-space>",
+						scope_incremental = "<c-s>",
+						node_decremental = "<c-backspace>",
+					},
+				},
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["aa"] = "@parameter.outer",
+							["ia"] = "@parameter.inner",
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
+					},
+					move = {
+						enable = true,
+						set_jumps = true, -- whether to set jumps in the jumplist
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>a"] = "@parameter.inner",
+						},
+						swap_previous = {
+							["<leader>A"] = "@parameter.inner",
+						},
+					},
+				},
+			})
 		end,
 	},
 
@@ -119,16 +197,72 @@ require("lazy").setup({
 	-- Git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
-	"lewis6991/gitsigns.nvim",
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				signs = {
+					add = { text = "+" },
+					change = { text = "~" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
+				},
+			})
+		end,
+	},
 
 	"navarasu/onedark.nvim", -- Theme inspired by Atom
-	"nvim-lualine/lualine.nvim", -- Fancier statusline
-	"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
-	"numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = false,
+					theme = "rose-pine",
+					component_separators = "|",
+					section_separators = "",
+				},
+			})
+		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				char = "│",
+				show_trailing_blankline_indent = false,
+			})
+		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
 	-- Fuzzy Finder (files, lsp, etc)
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("telescope").setup({
+				defaults = {
+					mappings = {
+						i = {
+							["<C-u>"] = false,
+							["<C-d>"] = false,
+						},
+					},
+				},
+			})
+
+			pcall(require("telescope").load_extension, "fzf")
+		end,
+	},
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 },
