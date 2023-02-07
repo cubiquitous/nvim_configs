@@ -53,14 +53,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("bufferline").setup({})
-		end,
-	},
-
+	{ "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
 	{ "nyoom-engineering/oxocarbon.nvim" },
 
 	{
