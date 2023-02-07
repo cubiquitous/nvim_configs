@@ -147,6 +147,7 @@ require("lazy").setup({
 -- See `:help vim.o`
 
 require("settings")
+
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
