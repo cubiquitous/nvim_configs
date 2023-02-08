@@ -3,6 +3,7 @@
 -- local opt = vim.opt
 local set = vim.o
 
+set.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 set.background = "dark" -- set this to dark or light
 
 set.foldcolumn = "1" -- '0' is not bad
@@ -29,7 +30,6 @@ set.updatetime = 250
 -- column of signs before numbers
 vim.wo.signcolumn = "yes"
 set.clipboard = "unnamedplus"
--- Set colorscheme
 set.completeopt = "menuone,noselect"
 set.cursorline = true
 set.expandtab = true -- tabs will become spaces
@@ -46,7 +46,7 @@ set.confirm = true
      oxocarbon
      rose-pine
 -- ]]
-vim.cmd.colorscheme("oxocarbon")
+vim.cmd.colorscheme("rose-pine")
 set.termguicolors = true
 set.t_Co = 256
 
