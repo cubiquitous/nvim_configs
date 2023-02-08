@@ -24,7 +24,6 @@ local colorscheme = path_generator("user/colorschemes/")
 local plugin = path_generator("user/plugins/")
 --
 
---
 require("lazy").setup({
 	plugin("mini_nvim"),
 	plugin("numb_nvim"),
@@ -57,4 +56,7 @@ require("lazy").setup({
 	colorscheme("zephyr-nvim"),
 	colorscheme("gloombuddy"),
 	colorscheme("omni_vim"),
+	colorscheme("pinkmare"),
+	colorscheme("nightfox"),
+	colorscheme("nord"),
 })
