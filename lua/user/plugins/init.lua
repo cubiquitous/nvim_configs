@@ -43,7 +43,7 @@ require("lazy").setup({
 	plugin("treesitter_textobjects"),
 	plugin("vim-fugitive"),
 	plugin("rhubarb"),
-	plugin("tpope/vim-sleuth"),
+	plugin("sleuth"),
 	plugin("gitsigns"),
 	plugin("lualine"),
 	plugin("indent-blankline"),
