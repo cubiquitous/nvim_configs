@@ -1,4 +1,4 @@
-local utils = require("user/lsp/util")
+local utils = require("user/lsp/utils")
 -- Setup mason so it can manage external tooling
 require("mason").setup()
 
