@@ -1,0 +1,1 @@
+return "yonlu/omni.vim"

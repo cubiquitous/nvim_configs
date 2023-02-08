@@ -53,4 +53,8 @@ require("lazy").setup({
 	colorscheme("rose_pine"),
 	colorscheme("oxocarbon"),
 	colorscheme("onedark"),
+	colorscheme("oceanic-next"),
+	colorscheme("zephyr-nvim"),
+	colorscheme("gloombuddy"),
+	colorscheme("omni_vim"),
 })
