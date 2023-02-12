@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "zR", require("ufo").openAllFolds)
-map("n", "zM", require("ufo").closeAllFolds)
+-- map("n", "zR", require("ufo").openAllFolds)
+-- map("n", "zM", require("ufo").closeAllFolds)
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 map({ "n", "v" }, "<Space>", "<Nop>", opts)
@@ -12,6 +12,7 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 map("n", "<leader>e", "<cmd>Neotree toggle <cr>", opts)
 map("n", "<leader>w", "<cmd>w<cr>", opts)
+-- closes buffer
 map("n", "<leader>d", "<cmd>bd<cr>", opts)
 
 -- See `:help telescope.builtin`
