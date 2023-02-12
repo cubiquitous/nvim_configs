@@ -49,6 +49,7 @@ require("lazy").setup({
 	plugin("telescope"),
 	plugin("telescope-fzf-native"),
 	plugin("mapper"),
+	plugin("cheatsheet"),
 	--
 	colorscheme("rose_pine"),
 	colorscheme("oxocarbon"),
