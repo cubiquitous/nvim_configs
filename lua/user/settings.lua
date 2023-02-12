@@ -16,7 +16,7 @@ set.hlsearch = false
 vim.wo.number = true -- Make line numbers default
 set.relativenumber = true -- relative numbers
 
-set.mouse = "a" -- Enable mouse mode
+-- set.mouse = "a" -- Enable mouse mode
 
 -- Enable break indent
 set.breakindent = true
