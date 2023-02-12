@@ -12,6 +12,7 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 map("n", "<leader>e", "<cmd>Neotree toggle <cr>", opts)
 map("n", "<leader>w", "<cmd>w<cr>", opts)
+map("n", "<leader>d", "<cmd>bd<cr>", opts)
 
 -- See `:help telescope.builtin`
 map("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
