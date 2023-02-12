@@ -14,8 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 
 --
 local function path_generator(main_path)
-	return function(sub_path)
-		return require(main_path .. sub_path)
+	return function(path_str)
+		if string.find(path_str, "/") then
+			return path_str
+		end
+		return require(main_path .. path_str)
 	end
 end
 
