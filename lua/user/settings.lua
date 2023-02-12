@@ -41,11 +41,6 @@ set.tabstop = 2 -- spaces for each tab
 set.scrolloff = 5 --number of lines shown above and below the cursor
 set.autoread = true -- automatically reloads the file if isn't already
 set.confirm = true
---[[
-  avaliable themes: 
-     oxocarbon
-     rose-pine
--- ]]
 vim.cmd.colorscheme("rose-pine")
 set.termguicolors = true
 set.t_Co = 256

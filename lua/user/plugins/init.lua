@@ -61,4 +61,7 @@ require("lazy").setup({
 	colorscheme("pinkmare"),
 	colorscheme("nightfox"),
 	colorscheme("nord"),
+	colorscheme("kanagawa"),
+	colorscheme("iceberg"),
+	colorscheme("rocket"),
 })
