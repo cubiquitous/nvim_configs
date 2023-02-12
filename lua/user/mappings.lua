@@ -6,6 +6,10 @@ local opts = { noremap = true, silent = true }
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 map({ "n", "v" }, "<Space>", "<Nop>", opts)
+map({ "n" }, "<c-h>", "<Cmd>wincmd h<CR>", opts)
+map({ "n" }, "<c-j>", "<Cmd>wincmd j<CR>", opts)
+map({ "n" }, "<c-k>", "<Cmd>wincmd k<CR>", opts)
+map({ "n" }, "<c-l>", "<Cmd>wincmd l<CR>", opts)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
