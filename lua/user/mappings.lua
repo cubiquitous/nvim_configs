@@ -30,8 +30,8 @@ map("n", "]d", vim.diagnostic.goto_next)
 map("n", "<leader>ld", vim.diagnostic.open_float)
 map("n", "<leader>q", vim.diagnostic.setloclist)
 
--- replace with S
-map("n", "S", ":%s///<left><left>", { desc = "Replace cursor all", noremap = true, silent = false })
+-- search and replace global
+map("n", "S", ":%s///gc<left><left><left><left>", { desc = "Replace cursor all", noremap = true, silent = false })
 
 -- Move to previous/next
 map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
