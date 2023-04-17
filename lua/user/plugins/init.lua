@@ -71,4 +71,5 @@ require("lazy").setup({
 	colorscheme("AlanWarren/rocket"),
 	colorscheme("atelierbram/Base2Tone-nvim"),
 	colorscheme("drewtempelmeyer/palenight.vim"),
+	colorscheme("nyoom-engineering/oxocarbon.nvim"),
 })
