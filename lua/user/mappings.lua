@@ -1,8 +1,9 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- map("n", "zR", require("ufo").openAllFolds)
--- map("n", "zM", require("ufo").closeAllFolds)
+local function AddDescToOpts(desc)
+	return { unpack(opts), desc = desc }
+end
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 map({ "n", "v" }, "<Space>", "<Nop>", opts)
@@ -43,8 +44,6 @@ map("n", "S", ":%s///gc<left><left><left><left>", { desc = "Replace cursor all",
 map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
 map("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
 -- Re-order to previous/next
-map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
-map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
 -- Goto buffer in position...
 map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
 map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
@@ -56,15 +55,13 @@ map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
 map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
 map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
 map("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
--- Pin/unpin buffer
-map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 -- Close buffer
 map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 -- Magic buffer-picking mode
 map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
-
 map({ "n", "i" }, "ç", "<CR>", { noremap = true, silent = true })
 
+-- CONFIG FOR TERMTOGGLE
 function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
 	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
@@ -77,17 +74,20 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
+--LAZYGIT
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+--
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
-vim.api.nvim_set_keymap("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
+map("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", AddDescToOpts("Toggle Lazygit"))
 
-local node = Terminal:new({ cmd = "node", hidden = true })
+-- LIVE_SERVER
+local live_server = Terminal:new({ cmd = "live-server", hidden = true })
 
-function _NODE_TOGGLE()
-	node:toggle()
+function _LIVE_SERVER_TOGGLE()
+	live_server:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<CR>", { noremap = true, silent = true })
+map("n", "<leader>tl", "<cmd> lua _LIVE_SERVER_TOGGLE()<cr>", AddDescToOpts("Open Live Server"))
