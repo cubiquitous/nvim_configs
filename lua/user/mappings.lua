@@ -18,8 +18,7 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "<leader>e", "<cmd>Neotree toggle <cr>", opts)
 map("n", "<leader>w", "<cmd>w<cr>", opts)
 -- closes buffer
-map("n", "<leader>d", "<cmd>bd<cr>", opts)
-
+map("n", "<A-c>", "<cmd>bd<cr>", opts)
 -- See `:help telescope.builtin`
 map("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 map("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
@@ -40,54 +39,5 @@ map("n", "<leader>q", vim.diagnostic.setloclist)
 -- search and replace global
 map("n", "S", ":%s///gc<left><left><left><left>", { desc = "Replace cursor all", noremap = true, silent = false })
 
--- Move to previous/next
-map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
--- Re-order to previous/next
--- Goto buffer in position...
-map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
-map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
-map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
-map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
-map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
-map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
-map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
-map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
-map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
-map("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
--- Close buffer
-map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
--- Magic buffer-picking mode
-map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
-map({ "n", "i" }, "ç", "<CR>", { noremap = true, silent = true })
-
--- CONFIG FOR TERMTOGGLE
-function _G.set_terminal_keymaps()
-	local opts = { noremap = true }
-	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
-end
-
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-local Terminal = require("toggleterm.terminal").Terminal
-
---LAZYGIT
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 --
-function _LAZYGIT_TOGGLE()
-	lazygit:toggle()
-end
-map("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", AddDescToOpts("Toggle Lazygit"))
-
--- LIVE_SERVER
-local live_server = Terminal:new({ cmd = "live-server", hidden = true })
-
-function _LIVE_SERVER_TOGGLE()
-	live_server:toggle()
-end
-
-map("n", "<leader>tl", "<cmd> lua _LIVE_SERVER_TOGGLE()<cr>", AddDescToOpts("Open Live Server"))
+map({ "n", "i" }, "ç", "<CR>", { noremap = true, silent = true })

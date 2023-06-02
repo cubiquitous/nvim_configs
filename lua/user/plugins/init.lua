@@ -21,14 +21,10 @@ local plugin = path_generator("user/plugins/")
 --
 
 require("lazy").setup({
-	plugin("mini_nvim"),
-	plugin("numb_nvim"),
+	plugin("mini_nvim"), -- comment, surround
 	plugin("neotree"),
 	plugin("nvim_ufo"),
 	plugin("null_ls_nvim"),
-	plugin("comment_nvim"),
-	plugin("barbar"),
-	plugin("nvim_surround"),
 	plugin("todo_comments"),
 	plugin("nvim_highlight_colors"),
 	plugin("diffview"),
@@ -44,9 +40,6 @@ require("lazy").setup({
 	plugin("indent-blankline"),
 	plugin("telescope"),
 	plugin("telescope-fzf-native"),
-	plugin("mapper"),
-	plugin("cheatsheet"),
-	plugin("toggleterm"),
 	--
 	colorscheme("rose_pine"),
 })
