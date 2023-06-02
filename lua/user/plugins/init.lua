@@ -23,6 +23,8 @@ local plugin = path_generator("user/plugins/")
 require("lazy").setup({
 	plugin("mini_nvim"), -- comment, surround
 	plugin("neotree"),
+	plugin("windline"),
+	plugin("vimpostor/vim-tpipeline"),
 	plugin("nvim_ufo"),
 	plugin("null_ls_nvim"),
 	plugin("todo_comments"),
@@ -36,7 +38,6 @@ require("lazy").setup({
 	plugin("rhubarb"),
 	plugin("sleuth"),
 	plugin("gitsigns"),
-	plugin("lualine"),
 	plugin("indent-blankline"),
 	plugin("telescope"),
 	plugin("telescope-fzf-native"),
