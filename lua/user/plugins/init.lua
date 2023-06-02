@@ -25,6 +25,7 @@ require("lazy").setup({
 	plugin("neotree"),
 	plugin("windline"),
 	plugin("vimpostor/vim-tpipeline"),
+	plugin("lsp_saga"),
 	plugin("nvim_ufo"),
 	plugin("null_ls_nvim"),
 	plugin("todo_comments"),
