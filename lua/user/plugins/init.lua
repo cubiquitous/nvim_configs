@@ -21,28 +21,47 @@ local plugin = path_generator("user/plugins/")
 --
 
 require("lazy").setup({
-	plugin("mini_nvim"), -- comment, surround
-	plugin("neotree"),
-	plugin("windline"),
-	plugin("vimpostor/vim-tpipeline"),
-	plugin("lsp_saga"),
-	plugin("nvim_ufo"),
-	plugin("null_ls_nvim"),
-	plugin("todo_comments"),
-	plugin("nvim_highlight_colors"),
-	-- plugin("diffview"),
+	-- [[   ESSENTIAL]]
+	plugin("telescope"),
+	plugin("telescope-fzf-native"),
+	-- [[   LSP   ]]
 	plugin("lsp_config"),
 	plugin("cmp"),
 	plugin("nvim_treesitter"),
 	plugin("treesitter_textobjects"),
+	plugin("lsp_saga"),
+	plugin("null_ls_nvim"),
+	-- [[   USEFUL   ]]
+	plugin("nvim_highlight_colors"),
+	plugin("sleuth"),
+	plugin("indent-blankline"),
+	plugin("vgit"),
+	plugin("nvim_ufo"),
+	-- [[   FLUFF   ]]
+	plugin("neotree"),
+	{
+		"max397574/better-escape.nvim",
+		config = function()
+			require("better_escape").setup({
+				mapping = { "jk" }, -- a table with mappings to use
+				timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+				clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+				keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+				-- example(recommended)
+				-- keys = function()
+				--   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
+				-- end,
+			})
+		end,
+	},
+	plugin("windline"),
+	plugin("vimpostor/vim-tpipeline"),
+	plugin("todo_comments"),
+	-- [[   COLORSCHEME   ]]
+	colorscheme("rose_pine"),
+	-- [[   DEACTIVATED   ]]
+	-- plugin("gitsigns"),
 	-- plugin("vim-fugitive"),
 	-- plugin("rhubarb"),
-	plugin("sleuth"),
-	-- plugin("gitsigns"),
-	plugin("indent-blankline"),
-	plugin("telescope"),
-	plugin("telescope-fzf-native"),
-	plugin("vgit"),
-	--
-	colorscheme("rose_pine"),
+	-- plugin("diffview"),
 })
