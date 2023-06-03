@@ -27,6 +27,8 @@ set.ignorecase = true
 set.smartcase = true
 -- Decrease update time
 set.updatetime = 250
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 -- column of signs before numbers
 vim.wo.signcolumn = "yes"
 set.clipboard = "unnamedplus"
