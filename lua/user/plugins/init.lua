@@ -16,7 +16,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --
---
 local plugin = path_generator("user/plugins/")
 --
 
@@ -24,6 +23,7 @@ require("lazy").setup({
 	-- [[   ESSENTIAL]]
 	plugin("telescope"),
 	plugin("telescope-fzf-native"),
+	plugin("mini_nvim"),
 	-- [[   LSP   ]]
 	plugin("lsp_config"),
 	plugin("cmp"),
