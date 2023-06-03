@@ -60,6 +60,16 @@ local servers = {
 	},
 }
 
+local handlers = {
+	["textDocument/definition"] = function(_, result, _)
+		if not vim.tbl_islist(result) or type(result) ~= "table" then
+			return result
+		end
+		---@diagnostic disable-next-line: missing-parameter
+		vim.lsp.util.jump_to_location(result[1])
+	end,
+}
+
 -- Setup neovim lua configuration
 --
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -69,5 +79,6 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 return {
 	on_attach = on_attach,
 	servers = servers,
+	handlers = handlers,
 	capabilities = capabilities,
 }

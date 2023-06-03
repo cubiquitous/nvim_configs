@@ -1,6 +1,5 @@
 local utils = require("user/lsp/utils")
 -- Setup mason so it can manage external tooling
-require("mason").setup()
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
@@ -15,6 +14,7 @@ mason_lspconfig.setup_handlers({
 			capabilities = utils.capabilities,
 			on_attach = utils.on_attach,
 			settings = utils.servers[server_name],
+			handlers = utils.handlers,
 		})
 	end,
 })
