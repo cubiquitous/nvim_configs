@@ -6,6 +6,7 @@ null_ls.setup({
 	-- register any number of sources simultaneously
 	sources = {
 		null_ls.builtins.formatting.prettierd.with({
+			-- depends on npm
 			filetypes = {
 				"javascript",
 				"typescript",
@@ -21,7 +22,8 @@ null_ls.setup({
 			},
 		}),
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.sqlformat,
+		null_ls.builtins.formatting.beautysh, -- depends on apt python3-venv
+		-- null_ls.builtins.formatting.sqlformat,
 	},
 
 	capabilities = utils.capabilities,
