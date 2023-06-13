@@ -14,6 +14,21 @@ nmap("n", "<c-j>", ":wincmd j<CR>", { silent = true })
 nmap("n", "<c-h>", ":wincmd h<CR>", { silent = true })
 nmap("n", "<c-l>", ":wincmd l<CR>", { silent = true })
 --
+keymap("n", "H", "^", { desc = "R[^] go to start of the line" })
+keymap("n", "L", "$", { desc = "R[$] go to end of line" })
+keymap({ "n", "v" }, "J", "%", { desc = "R[%] jump between pairs" })
+--
+keymap("n", "<BS>", "J", { desc = "R[J] Join line with next" })
+nmap("n", ",", "@@", { desc = "R[@@] to execute Macro" })
+--
+keymap("n", "[d", vim.diagnostic.goto_prev, Opts("Go to Next Diagnostic"))
+keymap("n", "]d", vim.diagnostic.goto_next, Opts("Go to Previous Diagnostic"))
+--
+keymap("n", "<F5>", "<cmd>:bprevious<cr>", Opts("move to next buffer"))
+keymap("n", "<F6>", "<cmd>:bnext<cr>", Opts("move to previous buffer"))
+--
+keymap("n", "<C-p>", "<C-u>zz", Opts("R[+gg] centers "))
+keymap("n", "<C-d>", "<C-d>zz", Opts("R[+gg] centers "))
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
