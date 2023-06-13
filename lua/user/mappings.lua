@@ -29,39 +29,31 @@ keymap("n", "<F6>", "<cmd>:bnext<cr>", Opts("move to previous buffer"))
 --
 keymap("n", "<C-p>", "<C-u>zz", Opts("R[+gg] centers "))
 keymap("n", "<C-d>", "<C-d>zz", Opts("R[+gg] centers "))
+
+-- [[   OTHER   ]]
+keymap("n", "<c-cr>", "i<CR>", { desc = "insert new line at cursor" })
+keymap("n", "<F4>", "<cmd>bd<cr>", Opts("Delete buffer"))
+keymap("n", "<S-F4>", "<cmd>q<cr>", Opts("Close Vim"))
+keymap("n", "<F2>", "<cmd>w<cr>", Opts("Save file"))
+keymap({ "n", "i" }, "çç", "<CR>", Opts("remap to <CR> when is pressed twice"))
+--
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-keymap("n", "<A-c>", "<cmd>bd<cr>", opts)
+-- [   PLUGINS       ]
+keymap("n", "<leader>e", "<cmd>Neotree toggle <cr>", opts) -- OK:
 
-keymap("n", "<leader>e", "<cmd>Neotree toggle <cr>", opts)
-keymap("n", "<leader>w", "<cmd>w<cr>", opts)
--- closes buffer
--- See `:help telescope.builtin`
-
-keymap("n", "[d", vim.diagnostic.goto_prev)
-keymap("n", "]d", vim.diagnostic.goto_next)
-keymap("n", "<leader>ld", vim.diagnostic.open_float)
-keymap("n", "<leader>q", vim.diagnostic.setloclist)
-
--- [[     Telescope       ]]
+-- [[   Telescope       ]]
 keymap("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 keymap("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 keymap("n", "<leader>k", require("telescope.builtin").keymaps, { desc = "[k] Shows all keymaps" })
-keymap("n", "<leader>c", require("telescope.builtin").commands, { desc = "[c] Shows all keymaps" })
+keymap("n", "<leader>c", require("telescope.builtin").commands, { desc = "[c] Shows all commands" })
 keymap("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 keymap("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-keymap("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 keymap("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
-keymap("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+keymap("n", "<leader>ge", require("telescope.builtin").git_status, { desc = "[G]it [E]xplore" })
 
--- search and replace global
-keymap("n", "S", ":%s///gc<left><left><left><left>", { desc = "Replace cursor all", noremap = true, silent = false })
-
---
-keymap({ "n", "i" }, "ç", "<CR>", { noremap = true, silent = true })
-
--- [[     LSP Saga       ]]
+-- [[   LSP Saga       ]]
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "show implementations and usages" })
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "[g]o [p]ick definition" })
 keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "[c]ode [a]ction" })
