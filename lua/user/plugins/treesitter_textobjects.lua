@@ -1,4 +1,5 @@
-return { -- Additional text objects via treesitter
+return {
+	-- Additional text objects via treesitter
 	"nvim-treesitter/nvim-treesitter-textobjects",
-	after = "nvim-treesitter",
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }

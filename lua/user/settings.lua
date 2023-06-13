@@ -20,6 +20,7 @@ set.relativenumber = true -- relative numbers
 
 -- Enable break indent
 set.breakindent = true
+set.linebreak = true
 -- Save undo history
 set.undofile = true
 -- Case insensitive searching UNLESS /C or capital in search
@@ -46,6 +47,7 @@ set.confirm = true
 vim.cmd.colorscheme("rose-pine")
 set.termguicolors = true
 set.t_Co = 256
+set.cmdheight = 0
 
 -- "-" is interpred as it's own keyword
 vim.opt.iskeyword:append("-")

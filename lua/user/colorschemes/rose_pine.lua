@@ -1,4 +1,4 @@
 return {
 	"rose-pine/neovim",
-	as = "rose-pine",
+	name = "rose-pine",
 }
