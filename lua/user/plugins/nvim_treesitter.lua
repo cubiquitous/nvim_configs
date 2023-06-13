@@ -1,4 +1,5 @@
-return { -- Highlight, edit, and navigate code
+return {
+	-- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	config = function()
 		pcall(require("nvim-treesitter.install").update({ with_sync = true }))
@@ -60,6 +61,12 @@ return { -- Highlight, edit, and navigate code
 						["<leader>A"] = "@parameter.inner",
 					},
 				},
+			},
+			rainbow = {
+				enable = true,
+				extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+				max_file_lines = nil, -- Do not enable for files with more than n lines, int
+				colors = { "#FF79C6", "#A4FFFF", "#50fa7b", "#FFFFA5", "#FF92DF", "#5e81ac", "#b48ead" }, -- table of hex strings
 			},
 		})
 	end,
