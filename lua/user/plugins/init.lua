@@ -27,7 +27,7 @@ require('lazy').setup({
   -- [[ Markdown ]]
   plugin('mkdnflow'),
   plugin('clipboard'),
-  plugin('markdown-preview'),
+  plugin('peek'),
   -- [[   LSP   ]]
   plugin('lsp_config'),
   plugin('cmp'),
