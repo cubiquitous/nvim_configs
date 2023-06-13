@@ -1,17 +1,19 @@
 local keymap = vim.keymap.set
+local nmap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-local function AddDescToOpts(desc)
+local function Opts(desc)
 	return { unpack(opts), desc = desc }
 end
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
-keymap({ "n" }, "<c-h>", "<Cmd>wincmd h<CR>", opts)
-keymap({ "n" }, "<c-j>", "<Cmd>wincmd j<CR>", opts)
-keymap({ "n" }, "<c-k>", "<Cmd>wincmd k<CR>", opts)
-keymap({ "n" }, "<c-l>", "<Cmd>wincmd l<CR>", opts)
 
+keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
+
+-- [[   MOVEMENT   ]]
+nmap("n", "<c-k>", ":wincmd k<CR>", { silent = true })
+nmap("n", "<c-j>", ":wincmd j<CR>", { silent = true })
+nmap("n", "<c-h>", ":wincmd h<CR>", { silent = true })
+nmap("n", "<c-l>", ":wincmd l<CR>", { silent = true })
+--
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
