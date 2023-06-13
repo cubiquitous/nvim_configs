@@ -41,7 +41,6 @@ require("lazy").setup({
 	plugin("indent-blankline"),
 	plugin("vgit"),
 	plugin("nvim_ufo"),
-	plugin("better_escape"),
 	-- [[   FLUFF   ]]
 	plugin("neotree"),
 	plugin("windline"),
@@ -54,4 +53,5 @@ require("lazy").setup({
 	-- plugin("vim-fugitive"),
 	-- plugin("rhubarb"),
 	-- plugin("diffview"),
+	-- plugin("prurigro/vim-markdown-concealed"),
 })
