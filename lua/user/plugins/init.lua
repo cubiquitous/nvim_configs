@@ -26,6 +26,7 @@ require("lazy").setup({
 	plugin("mini_nvim"),
 	-- [[ Markdown ]]
 	plugin("mkdnflow"),
+	plugin("clipboard"),
 	-- [[   LSP   ]]
 	plugin("lsp_config"),
 	plugin("cmp"),
