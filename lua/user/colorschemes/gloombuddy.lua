@@ -1,4 +1,4 @@
 return {
-	"tjdevries/colorbuddy.vim",
-	dependencies = { "bkegley/gloombuddy" },
+  'tjdevries/colorbuddy.vim',
+  dependencies = { 'bkegley/gloombuddy' },
 }

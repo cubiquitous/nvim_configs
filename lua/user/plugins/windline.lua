@@ -1,6 +1,6 @@
 return {
-	"windwp/windline.nvim",
-	config = function()
-		require("wlsample.bubble2")
-	end,
+  'windwp/windline.nvim',
+  config = function()
+    require('wlsample.bubble2')
+  end,
 }

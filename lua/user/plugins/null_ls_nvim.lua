@@ -1,1 +1,1 @@
-return "jose-elias-alvarez/null-ls.nvim"
+return 'jose-elias-alvarez/null-ls.nvim'

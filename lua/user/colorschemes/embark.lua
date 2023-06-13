@@ -1,1 +1,1 @@
-return { "embark-theme/vim", as = "embark" }
+return { 'embark-theme/vim', as = 'embark' }

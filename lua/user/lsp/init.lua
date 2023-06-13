@@ -1,2 +1,2 @@
-require("user/lsp/null_ls")
-require("user/lsp/mason")
+require('user/lsp/null_ls')
+require('user/lsp/mason')
