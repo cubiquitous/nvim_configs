@@ -44,4 +44,37 @@ vim.cmd([[
   endfunction
 ]])
 
+-- show name of the file in TMUX
+vim.cmd(
+	[[ autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . fnamemodify(expand('%'), ':t') ) ]]
+)
 
+vim.cmd([[
+let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+     execute "set rtp+=" . g:opamshare . "/merlin/vim"
+]])
+
+vim.cmd([[
+	highlight NonText guibg=none
+	highlight Normal guibg=none
+
+	augroup user_colors
+	  autocmd!
+	  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+	augroup END
+]])
+
+function OpenPathWithXdgOpen()
+	local line = vim.api.nvim_get_current_line()
+	local path = string.match(line, [["(.-)"]])
+	if path then
+		vim.fn.system('xdg-open "' .. path .. '"')
+	else
+		print("No path found between quotes")
+	end
+end
+
+--
+vim.api.nvim_set_keymap("n", "<Leader>o", ":lua OpenPathWithXdgOpen()<CR>", { silent = true })
+
+vim.cmd([[let g:netrw_browsex_viewer= "xdg-open"]])
