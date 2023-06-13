@@ -24,6 +24,8 @@ require("lazy").setup({
 	plugin("telescope"),
 	plugin("telescope-fzf-native"),
 	plugin("mini_nvim"),
+	-- [[ Markdown ]]
+	plugin("mkdnflow"),
 	-- [[   LSP   ]]
 	plugin("lsp_config"),
 	plugin("cmp"),
