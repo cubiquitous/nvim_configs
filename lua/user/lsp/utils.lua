@@ -51,7 +51,7 @@ local servers = {
 	-- pyright = {},
 	-- rust_analyzer = {},
 	tsserver = {},
-	ocamllsp = {},
+	--ocamllsp = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },

@@ -18,3 +18,11 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+-- SIDELOADED
+require("lspconfig")["ocamllsp"].setup({
+	capabilities = utils.capabilities,
+	on_attach = utils.on_attach,
+	-- settings = utils.servers["ocamllsp"],
+	handlers = utils.handlers,
+})
