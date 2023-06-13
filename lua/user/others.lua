@@ -1,9 +1,6 @@
 -- from u/m00fin
 -- creates persistent foldings and saves cursor location_
 vim.cmd([[
-	let g:skipview_files = [
-		\ '[EXAMPLE PLUGIN BUFFER]'
-		\ ]
 	function! MakeViewCheck()
 		if has('quickfix') && &buftype =~ 'nofile'
 			" Buffer is marked as not a file
@@ -11,10 +8,6 @@ vim.cmd([[
 		endif
 		if empty(glob(expand('%:p')))
 			" File does not exist on disk
-			return 0
-		endif
-		if index(g:skipview_files, expand('%')) >= 0
-			" File is in skip list
 			return 0
 		endif
 		return 1
@@ -51,7 +44,4 @@ vim.cmd([[
   endfunction
 ]])
 
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-vim.cmd([[ autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%")) ]])
